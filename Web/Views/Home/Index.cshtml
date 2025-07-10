@@ -1,6 +1,10 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="~/Scripts/Home/Index.js"></script>
+
 <div class="row">
     <div class="col-12">
         <h1 class="display-4">ClubRight Screening Assessment</h1>
@@ -32,19 +36,41 @@
         <div class="mb-5">
             <h3>Add your solution to question 2 here</h3>
 
-            <p><button>Increment number by 1</button></p>
-            <p><span>1</span></p>
+            <p><button id="incrementButton">Increment number by 1</button></p>
+            <p><span id="buttonClickCounter">@ViewBag.ButtonVal</span></p>
             <hr/>
         </div>
 
         <div class="mb-5">
             <h3>Add your solution to question 3 here</h3>
+            <textarea id="TextToSwap"></textarea>
+
+            <p><button id="ReverseLiterally">Reverse Completely</button></p>
+            <p><button id="ReverseWords">Reverse Wordily</button></p>
+
+            <p><span id="SentanceReversal"></span></p>
+
             <hr/>
         </div>
 
         <div class="mb-5">
             <h4>How did you find this assessment?</h4>
             @* Write here *@
+            <p><del>Via the recruiters link</del></p>
+
+            <p style ="text-align: justify;">Surprisingly, I've not actually started a project similar to this from a similar state. As in, the inability to just <em>use</em> things like session storeage and such.</p>
+
+            <p style="text-align: justify;">That said, it wasn't hard to get that set up. Once that was sorted, creating an Ajax call was second nature. Setting the value on the inital page to session viarable ensures that it resets upon first visit.</p>
+
+            <p style="text-align: justify;">With the counter at zero, the Controller Method ensures it's set first, then increments it. Saves it to the session variable, and then to ensure it gets set, it's passed back to the Javascript and then set with Jquery.</p>
+
+            <p style="text-align: justify;">Saving the value in Session storage, whilst not ideal in a realistic sense for data storage (can be used for Login Details, but actual data for different pages is best saved securely and reloaded on each page), is a good enough way in this exersise to pass values between pages. Simply setting a viewbag value on page load and then referancing that in the HTML sorts that out.</p>
+
+            <p style="text-align: justify;">Creating a text entry field that's then used to pass a user input to a Controller was simple. The two buttons are near identical, and referance the same method, passing the value in the textbox and their own ID. The String Manipulation then happens based on the string value, returning with a message if theres no text, then deciding what needs to happen based upon the button ID Passed.</p>
+
+            <p style="text-align: justify;">There is one further bit of streamlining, when reversing a sentance, it will first check if there are spaces first, before then either returning the single 'word' or processing the reverse.</p>
+
+            <p style="text-align: justify;">All in all, once the inital set up was sorted it was fair. I knew what I had to do, understood the tasks and were able to carry them out point by point with little issue. I enjoyed completing it whilst watching youtube and chatting with a friend.</p>
         </div>
     </div>
 </div>
